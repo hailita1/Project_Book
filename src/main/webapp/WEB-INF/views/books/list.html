@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reception List</title>
+</head>
+<body>
+<p>
+    <a href="/create-book">Create New Book</a>
+</p>
+<h1>Book List</h1>
+<form>
+    <label>Search by name:</label>
+    <input type="text" name="search">
+    <input type="submit" value="Search">
+</form>
+<br>
+<table border="1px">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Author</td>
+        <td>NXB</td>
+        <td>IMG</td>
+        <td>Edit</td>
+        <td>Delete</td>
+        <td>View</td>
+    </tr>
+    <th:block th:each="book:${books}">
+        <tr>
+            <td th:text="${book.getId()}"></td>
+            <td th:text="${book.getName()}"></td>
+            <td th:text="${book.getPrice()}"></td>
+            <td th:text="${book.getAuthor()}"></td>
+            <td th:text="${book.getNXB()}"></td>
+            <td><img width="150px" height="200px" th:src="@{'/image/' + ${book.getImg()}}"></td>
+            <td><a th:href="@{/edit-book/__${book.id}__}">edit</a></td>
+            <td><a th:href="@{/delete-book/__${book.id}__}">delete</a></td>
+            <td><a th:href="@{/view-book/__${book.id}__}">view</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
