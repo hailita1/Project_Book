@@ -10,7 +10,7 @@ public class BookRepository implements IBookRepository {
     List<Book> bookList = new ArrayList<>();
 
     {
-        bookList.add(new Book(1, "Tham tu lung danh CoNan", 18000, "Maria Orawa", "Nhat Ban", "messi.jpg"));
+        bookList.add(new Book(1, "Tham tu lung danh CoNan", 18000, "Maria Orawa", "Nhat Ban", "cogiao.jpg"));
     }
 
     @Override
