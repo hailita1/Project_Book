@@ -11,7 +11,6 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -25,6 +24,26 @@ public class BookController {
 
     @Autowired
     BookService bookService;
+
+    @GetMapping("/login")
+    public ModelAndView showLoginForm() {
+        ModelAndView modelAndView = new ModelAndView("/books/login");
+        return modelAndView;
+    }
+
+    @PostMapping("/logins")
+    public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String password) {
+        if (username.equals("admin") && password.equals("123456")) {
+            List<Book> books;
+            books = bookService.findAll();
+            ModelAndView modelAndView = new ModelAndView("/books/showBook");
+            modelAndView.addObject("books", books);
+            return modelAndView;
+        } else {
+            ModelAndView modelAndView = new ModelAndView("/error-404");
+            return modelAndView;
+        }
+    }
 
     @GetMapping("/books")
     public ModelAndView showBookList(@RequestParam("search") Optional<String> search) {

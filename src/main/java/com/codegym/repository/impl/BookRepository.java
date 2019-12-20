@@ -11,6 +11,7 @@ public class BookRepository implements IBookRepository {
 
     {
         bookList.add(new Book(1, "Tham tu lung danh CoNan", 18000, "Maria Orawa", "Nhat Ban", "cogiao.jpg"));
+        bookList.add(new Book(1, "haha", 18000, "Maria Orawa", "Nhat Ban", "cogiao.jpg"));
     }
 
     @Override
