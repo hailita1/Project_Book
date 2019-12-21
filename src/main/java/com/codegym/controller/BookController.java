@@ -40,7 +40,8 @@ public class BookController {
             modelAndView.addObject("books", books);
             return modelAndView;
         } else {
-            ModelAndView modelAndView = new ModelAndView("/error-404");
+            ModelAndView modelAndView = new ModelAndView("/books/error_login");
+            modelAndView.addObject("message", "Wrong username or wrong password, Please login again !!!");
             return modelAndView;
         }
     }
